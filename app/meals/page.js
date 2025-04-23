@@ -14,6 +14,10 @@ async function Meals() {
   
   const meals = await getMeals();
 
+  if (meals.length === 0) {
+    return <p>No meals found.</p>;
+  }
+
   return <MealsGrid meals={meals} />;
 }
 
