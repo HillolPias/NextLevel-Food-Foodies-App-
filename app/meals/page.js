@@ -13,6 +13,7 @@ async function Meals() {
   console.log('Fetching meals');
   
   const meals = await getMeals();
+  console.log(meals);
 
   if (meals.length === 0) {
     return <p>No meals found.</p>;
