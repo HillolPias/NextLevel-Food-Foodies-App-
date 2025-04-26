@@ -28,39 +28,41 @@ export default function ImagePicker({ label, name }) {
     fileReader.readAsDataURL(file);
   }
 
-  return (
-    <>
-      <div className={classes.picker}>
-        <label htmlFor={name}>{label}</label>
-        <div className={classes.controls}>
-          <div className={classes.preview}>
-            {!pickedImage && <p>No image picked yet.</p>}
-            {pickedImage && (
-              <Image
-                src={pickedImage}
-                alt="The image selected by the user"
-                fill
-              />
-            )}
+
+    return (
+      <>
+        <div className={classes.picker}>
+          <label htmlFor={name}>{label}</label>
+          <div className={classes.controls}>
+            <div className={classes.preview}>
+              {!pickedImage && <p>No image picked yet.</p>}
+              {pickedImage && (
+                <Image
+                  src={pickedImage}
+                  alt="The image selected by the user"
+                  fill
+                />
+              )}
+            </div>
+            <input
+              className={classes.input}
+              type="file"
+              id={name}
+              accept="image/png, image/jpeg"
+              name={name}
+              ref={imageInput}
+              onChange={handleImageChange}
+            />
+            <button
+              className={classes.button}
+              type="button"
+              onClick={handlePickClick}
+            >
+              Pick an image
+            </button>
           </div>
-          <input
-            className={classes.input}
-            type="file"
-            id={name}
-            accept="image/png, image/jpeg"
-            name={name}
-            ref={imageInput}
-            onChange={handleImageChange}
-          />
-          <button
-            className={classes.button}
-            type="button"
-            onClick={handlePickClick}
-          >
-            Pick an image
-          </button>
         </div>
-      </div>
-    </>
-  );
-}
+      </>
+    );
+  };
+
